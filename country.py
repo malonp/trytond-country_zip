@@ -25,11 +25,10 @@ from trytond.pool import PoolMeta
 
 
 __all__ = ['Subdivision']
-__metaclass__ = PoolMeta
 
 
 class Subdivision:
-    "Subdivision"
+    __metaclass__ = PoolMeta
     __name__ = 'country.subdivision'
 
     zips = fields.One2Many('country.zip', 'subdivision', 'Zips')

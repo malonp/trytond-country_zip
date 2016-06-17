@@ -25,11 +25,10 @@ from trytond.pyson import Eval, If, Bool
 
 
 __all__ = ['Address']
-__metaclass__ = PoolMeta
 
 
 class Address:
-    "Address"
+    __metaclass__ = PoolMeta
     __name__ = 'party.address'
 
     @classmethod

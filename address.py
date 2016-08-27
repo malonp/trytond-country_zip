@@ -40,5 +40,5 @@ class Address:
     def default_country():
         Configuration = Pool().get('party.configuration')
         config = Configuration(1)
-        if config.default_country:
-            return config.default_country.id
+        if config.party_country:
+            return config.party_country.id

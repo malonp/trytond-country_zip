@@ -30,5 +30,5 @@ class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'party.configuration'
 
-    default_country = fields.Property(fields.Many2One('country.country',
-            'Default Country'))
+    party_country = fields.Property(fields.Many2One('country.country',
+            'Party Country'))

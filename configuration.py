@@ -20,8 +20,10 @@
 ##############################################################################
 
 
+from trytond import backend
 from trytond.model import fields
 from trytond.pool import PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['Configuration']
 
@@ -32,3 +34,16 @@ class Configuration:
 
     party_country = fields.Property(fields.Many2One('country.country',
             'Party Country'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 0.8.0:
+        #   - default_country renamed into party_country
+        if table.column_exist('default_country'):
+            table.column_rename('default_country', 'party_country')
+
+        super(Configuration, cls).__register__(module_name)

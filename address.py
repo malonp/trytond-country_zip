@@ -27,8 +27,7 @@ from trytond.pyson import Eval, If, Bool
 __all__ = ['Address']
 
 
-class Address:
-    __metaclass__ = PoolMeta
+class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
 
     @classmethod
@@ -36,9 +35,9 @@ class Address:
         super(Address, cls).__setup__()
         cls.subdivision.domain.append(If(Bool(Eval('zip')), [('zips.zip', '=', Eval('zip'))],[]))
 
-    @staticmethod
-    def default_country():
+    @classmethod
+    def default_country(cls, **pattern):
         Configuration = Pool().get('party.configuration')
         config = Configuration(1)
-        if config.party_country:
-            return config.party_country.id
+        country = config.get_multivalue('party_country', **pattern)
+        return country.id if country else None

@@ -29,5 +29,6 @@ def register():
     Pool.register(
         Address,
         Configuration,
+        ConfigurationCountry,
         Subdivision,
         module='country_zip', type_='model')

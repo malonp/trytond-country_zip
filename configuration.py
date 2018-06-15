@@ -20,17 +20,25 @@
 ##############################################################################
 
 
-from trytond.model import fields
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import PoolMeta
 
 
 __all__ = ['Configuration',
+            'ConfigurationCountry',
             ]
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'party.configuration'
 
-    party_country = fields.Property(fields.Many2One('country.country',
-            'Party Country'))
+    party_country = fields.MultiValue(fields.Many2One('country.country',
+        'Party Country'))
+
+
+class ConfigurationCountry(ModelSQL, ValueMixin):
+    'Party Configuration Country'
+    __name__ = 'party.configuration.party_country'
+
+    party_country = fields.Many2One('country.country',
+        'Party Country')

@@ -27,9 +27,7 @@ from trytond.pool import PoolMeta
 from trytond.modules.party.configuration import _ConfigurationValue
 
 
-__all__ = ['Configuration',
-            'ConfigurationCountry',
-            ]
+__all__ = ['Configuration', 'ConfigurationCountry']
 
 
 party_country = fields.Many2One('country.country', 'Party Country')

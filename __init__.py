@@ -25,10 +25,6 @@ from .address import *
 from .configuration import *
 from .country import *
 
+
 def register():
-    Pool.register(
-        Address,
-        Configuration,
-        ConfigurationCountry,
-        Subdivision,
-        module='country_zip', type_='model')
+    Pool.register(Address, Configuration, ConfigurationCountry, Subdivision, module='country_zip', type_='model')

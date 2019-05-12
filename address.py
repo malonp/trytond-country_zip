@@ -33,7 +33,7 @@ class Address(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Address, cls).__setup__()
-        cls.subdivision.domain.append(If(Bool(Eval('zip')), [('zips.zip', '=', Eval('zip'))],[]))
+        cls.subdivision.domain.append(If(Bool(Eval('zip')), [('zips.zip', '=', Eval('zip'))], []))
 
     @classmethod
     def default_country(cls, **pattern):

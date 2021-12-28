@@ -20,12 +20,9 @@
 ##############################################################################
 
 
-from trytond.model import ModelSQL, fields
-from trytond.model import ValueMixin
-from trytond.pool import PoolMeta
-
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.modules.party.configuration import _ConfigurationValue
-
+from trytond.pool import PoolMeta
 
 __all__ = ['Configuration', 'ConfigurationCountry']
 

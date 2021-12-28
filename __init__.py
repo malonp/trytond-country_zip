@@ -21,6 +21,7 @@
 
 
 from trytond.pool import Pool
+
 from .address import *
 from .configuration import *
 from .country import *
